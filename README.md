@@ -1,5 +1,12 @@
 # Описание проекта Telegram-Bot
 
+Учебный проект Telegram Bot проекта Mini - Bank. 
+
+Схема проекта состоит из трех слоев.
+1. Frontend - Telegram Bot, клиенская часть
+2. Middle - Сервис для обработки запросов клиента
+3. Back - АБС
+
 ## UML - диаграмма
 
 @startuml
@@ -14,3 +21,8 @@ TelegramBot -> Client : request
 
 [![diagram](uml-diagram.png)]
 
+## Стек
+
+Kotlin 
+
+Spring Boot
