@@ -7,6 +7,8 @@ build/
 ### ENVIROMENTS
 .env
 
+
+
 ### STS ###
 .apt_generated
 .classpath
@@ -20,7 +22,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
