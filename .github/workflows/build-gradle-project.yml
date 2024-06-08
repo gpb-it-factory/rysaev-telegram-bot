@@ -28,16 +28,14 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
-    - name: List all files in the working directory before cd
-      run: ls
-    - name: Change directory to  project
-      run: cd Application
-    - name: List all files in the working directory after cd
-      run: ls
     - name: Assign rights
-      run: chmod +x ./gradlew 
+      run: chmod +x ./Application/gradlew 
     - name: Run build
-      run: ./gradlew build
+      run: |
+        echo "Build start"
+        cd Application && ./gradlew build
     - name: Run test
-      run: ./gradlew  build -x test
+      run: |
+        echo "Test start"
+        cd Application && ./gradlew build -x test
     - run: echo "🍏 This job's status is ${{ job.status }}."
