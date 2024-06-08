@@ -1,0 +1,41 @@
+name: Build Gradle project
+
+on:
+  push:
+    branches:
+        - trunk
+  pull_request:
+    branches:
+        - trunk
+
+jobs:
+  build-gradle-project:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    - name: Checkout project sources
+      uses: actions/checkout@v4
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+      with:
+        distribution: 'gradle'
+        build-scan-publish: true
+        build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
+        build-scan-terms-of-use-agree: "yes"
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    - name: Assign rights
+      run: chmod +x ./Application/gradlew 
+    - name: Run build
+      run: |
+        echo "Build start"
+        cd Application && ./gradlew build
+    - name: Run test
+      run: |
+        echo "Test start"
+        cd Application && ./gradlew build -x test
+    - run: echo "🍏 This job's status is ${{ job.status }}."

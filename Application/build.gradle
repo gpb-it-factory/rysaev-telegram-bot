@@ -1,0 +1,53 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+  id 'org.springframework.boot' version '3.3.0'
+  id 'io.spring.dependency-management' version '1.1.5'
+  id 'org.jetbrains.kotlin.jvm' version '1.9.24'
+  id 'org.jetbrains.kotlin.plugin.spring' version '1.9.24'
+}
+
+group = 'rysaev.bank'
+version = '0.0.1-SNAPSHOT'
+
+java {
+  sourceCompatibility = '17'
+}
+
+repositories {
+  mavenCentral()
+}
+
+ext.versions = [
+    telegrambots             : "6.9.7.1",
+    telegram_external_version: "7.2.0"
+]
+
+ext.telegram = [
+    telegrambots            : "org.telegram:telegrambots:$versions.telegrambots",
+    telegrambots_extensions : "org.telegram:telegrambots-extensions:$versions.telegram_external_version",
+    telegrambots_longpolling: "org.telegram:telegrambots-longpolling:$versions.telegram_external_version",
+    telegrambots_client     : "org.telegram:telegrambots-client:$versions.telegram_external_version"
+]
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter'
+  implementation 'org.jetbrains.kotlin:kotlin-reflect'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  implementation telegram.telegrambots
+  implementation telegram.telegrambots_extensions
+  implementation telegram.telegrambots_longpolling
+  implementation telegram.telegrambots_client
+}
+
+tasks.withType(KotlinCompile) {
+  kotlinOptions {
+    freeCompilerArgs += '-Xjsr305=strict'
+    jvmTarget = '17'
+  }
+}
+
+tasks.named('test') {
+  useJUnitPlatform()
+}
