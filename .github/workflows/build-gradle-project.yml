@@ -26,6 +26,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
+        distribution: 'temurin'
         java-version: '17'
     - name: Change directory to  project
       run: cd Application
