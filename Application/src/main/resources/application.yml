@@ -1,0 +1,12 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: Application
+
+
+
+bot:
+  config:
+    token: ${token}
+    username: "Rysaev Bank"
