@@ -23,9 +23,9 @@ jobs:
         build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
         build-scan-terms-of-use-agree: "yes"
     - name: Assign rights
-      run: chmod +x ./Application/gradlew 
+      run: chmod +x ./gradlew 
     - name: Run build
-      run: ./Application/gradlew build
+      run: ./gradlew build
     - name: Run test
-      run: ./Application/gradlew  build -x test
+      run: ./gradlew  build -x test
     - run: echo "🍏 This job's status is ${{ job.status }}."
