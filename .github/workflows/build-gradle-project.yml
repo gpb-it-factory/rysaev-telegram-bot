@@ -28,8 +28,12 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
+    - name: List all files in the working directory before cd
+      run: ls
     - name: Change directory to  project
       run: cd Application
+    - name: List all files in the working directory after cd
+      run: ls
     - name: Assign rights
       run: chmod +x ./gradlew 
     - name: Run build
