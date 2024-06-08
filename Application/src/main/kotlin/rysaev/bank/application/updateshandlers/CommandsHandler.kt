@@ -1,6 +1,5 @@
 package rysaev.bank.application.updateshandlers
 
-import java.lang.String
 import java.util.function.Supplier
 import org.springframework.stereotype.Component
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient
@@ -18,12 +17,12 @@ class CommandsHandler(botProperties: BotProperties) :
     register(PingCommand())
   }
 
-  override fun processNonCommandUpdate(p0: Update) {
-    val textOfMessage = p0.message?.text ?: return
+  override fun processNonCommandUpdate(update: Update) {
+    val textOfMessage = update.message?.text ?: return
     val echoMessage = SendMessage(
-      String.valueOf(p0.message.chatId),
+      (update.message.chatId).toString(),
       """
-       Hey heres your message:
+       Hey here is your message:
        $textOfMessage
        from ${Thread.currentThread().name}
        """.trimIndent()

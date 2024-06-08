@@ -7,8 +7,8 @@ import org.telegram.telegrambots.meta.api.objects.User
 import org.telegram.telegrambots.meta.generics.TelegramClient
 
 class PingCommand : BotCommand("ping", "ping command") {
-  override fun execute(p0: TelegramClient, p1: User, p2: Chat, p3: Array<out String>) {
-    val answer = SendMessage(p2.id.toString(), "pong")
-    p0.execute(answer)
+  override fun execute(telegramClient: TelegramClient, user: User, chat: Chat, strings: Array<out String>) {
+    val answer = SendMessage(chat.id.toString(), "pong")
+    telegramClient.execute(answer)
   }
 }
